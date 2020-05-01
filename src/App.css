@@ -1,0 +1,18 @@
+.board > * {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(10, 30px);
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+}
+
+.gameBoards {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
