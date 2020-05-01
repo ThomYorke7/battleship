@@ -63,12 +63,9 @@ const gameBoard = () => {
     }
   };
 
-  const getBoard = () => {
-    return board;
-  };
   return {
     placeShip,
-    getBoard,
+    board,
     checkPlacementLength,
     checkPlacementFree,
     receiveAttack,

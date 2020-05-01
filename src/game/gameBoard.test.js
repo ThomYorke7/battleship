@@ -10,27 +10,16 @@ describe('checks placement functionality', () => {});
 test('places ship horizontally', () => {
   const game = gameBoard();
   game.placeShip(2, 3, true, 4);
-  expect(game.getBoard()[3]).toStrictEqual([
-    '',
-    '',
-    4,
-    4,
-    4,
-    4,
-    '',
-    '',
-    '',
-    '',
-  ]);
+  expect(game.board[3]).toStrictEqual(['', '', 4, 4, 4, 4, '', '', '', '']);
 });
 
 test('places ship vertically', () => {
   const game = gameBoard();
   game.placeShip(2, 3, false, 4);
-  expect(game.getBoard()[3][2]).toBe(4);
-  expect(game.getBoard()[4][2]).toBe(4);
-  expect(game.getBoard()[5][2]).toBe(4);
-  expect(game.getBoard()[6][2]).toBe(4);
+  expect(game.board[3][2]).toBe(4);
+  expect(game.board[4][2]).toBe(4);
+  expect(game.board[5][2]).toBe(4);
+  expect(game.board[6][2]).toBe(4);
 });
 
 test('allows placement', () => {
@@ -67,5 +56,5 @@ test('assigns missed attack properly', () => {
   const game = gameBoard();
   game.placeShip(2, 3, false, 4);
   game.receiveAttack(4, 3);
-  expect(game.getBoard()[3][4]).toBe('X');
+  expect(game.board[3][4]).toBe('X');
 });

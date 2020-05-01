@@ -1,18 +1,58 @@
-.board > * {
-  display: grid;
-  width: fit-content;
-  grid-template-columns: repeat(10, 30px);
-}
-
 .cell {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.gameBoards {
+.mainArea {
   display: flex;
   width: 80%;
   margin: auto;
   justify-content: space-between;
+}
+
+#playerBoard {
+  position: relative;
+}
+
+#newBoardBtn {
+  position: absolute;
+  margin-top: 2rem;
+}
+
+.gameBoards {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    '. frameX'
+    'frameY board';
+  column-gap: 3px;
+  row-gap: 3px;
+}
+
+.board {
+  grid-area: board;
+}
+
+.board > * {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+}
+
+.frameX {
+  grid-area: frameX;
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  justify-items: center;
+}
+
+.frameY {
+  grid-area: frameY;
+  display: grid;
+  grid-template-rows: repeat(10, 30px);
+  align-items: center;
 }
