@@ -11,9 +11,12 @@ const Cell = (props) => {
       data-y={dataY}
       onClick={(e) => handleAttack(e)}
     >
-      {item}
+      {item !== 'X' ? null : item}
     </button>
   );
 };
 
 export default Cell;
+
+// fare in modo che se textcontent è diverso da 1,2,3,4,5, non viene mostrato.
+// fare in modo che se l'evento avviene in un button con textcontent 1,2,3,4,5, lo sfondo diventa rosso

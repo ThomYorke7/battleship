@@ -3,6 +3,7 @@ import { gameBoard } from './gameBoard';
 function createComputer() {
   const computer = gameBoard();
   const computerBoard = computer.board;
+  const computerShips = computer.ships;
   const attacks = [];
 
   function createCoordinates() {
@@ -46,8 +47,16 @@ function createComputer() {
     }
   }
 
+  function checkShips() {
+    computerShips.some((ship) => {
+      if (ship.isSunk() === 'sunk') {
+        console.log(ship.getLength());
+      }
+    });
+  }
+
   function hasLost() {
-    return computer.ships.every((ship) => ship.isSunk());
+    return computerShips.every((ship) => ship.isSunk());
   }
 
   function attack(enemy) {
@@ -61,7 +70,21 @@ function createComputer() {
       }
     }
   }
-  return { hasLost, attack, computerBoard, generatePlacement };
+
+  function receiveAttack(x, y) {
+    computer.receiveAttack(x, y);
+    checkShips();
+  }
+
+  return {
+    checkShips,
+    hasLost,
+    attack,
+    computerBoard,
+    computerShips,
+    generatePlacement,
+    receiveAttack,
+  };
 }
 
 export default createComputer;

@@ -56,3 +56,13 @@ function createPlayer() {
 }
 
 export default createPlayer;
+
+// const receiveAttack = (x, y) => {
+//   const spot = board[y][x];
+//   if (spot !== '' && spot !== 'X') {
+//     const ship = ships.find((s) => s.getLength() === spot);
+//     ship.isHit();
+//   } else if (spot === '') {
+//     board[y].splice(x, 1, 'X');
+//   }
+// };

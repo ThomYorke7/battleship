@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Board from './components/board';
+import Ships from './components/ships';
 import createPlayer from './game/player';
 import createComputer from './game/computer';
 
@@ -8,17 +9,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.player = createPlayer();
-    this.state = { playerBoard: this.player.playerBoard, computerBoard: [] };
+    this.computer = createComputer();
+    this.state = {
+      playerBoard: this.player.playerBoard,
+      computerBoard: [],
+      computerShips: [],
+    };
   }
 
   componentDidMount() {
-    const computer = createComputer();
-    computer.generatePlacement();
-    //const player = createPlayer();
-    //this.player.generatePlacement();
+    this.computer.generatePlacement();
     this.setState({
-      //playerBoard: this.player.playerBoard,
-      computerBoard: computer.computerBoard,
+      computerBoard: this.computer.computerBoard,
+      computerShips: this.computer.computerShips,
     });
   }
 
@@ -31,7 +34,14 @@ class App extends React.Component {
   };
 
   handleAttack = (e) => {
+    const x = e.target.dataset.x;
+    const y = e.target.dataset.y;
     console.log(e.target);
+    this.computer.receiveAttack(x, y);
+    this.setState({
+      computerBoard: this.computer.computerBoard,
+      computerShips: this.computer.computerShips,
+    });
   };
 
   render() {
@@ -43,10 +53,18 @@ class App extends React.Component {
             New Board
           </button>
         </div>
-        <Board
-          item={this.state.computerBoard}
-          handleAttack={this.handleAttack}
-        />
+        <div>
+          <Board
+            item={this.state.computerBoard}
+            handleAttack={this.handleAttack}
+            id='computerBoard'
+          />
+          <div className='ships'>
+            {this.state.computerShips.map((ship) => (
+              <Ships id={ship.getLength()} className={ship.isSunk()} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
