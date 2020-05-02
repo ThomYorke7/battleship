@@ -9,6 +9,7 @@ const Row = (props) => {
       dataX={i}
       dataY={props.dataY}
       handleAttack={props.handleAttack}
+      boardType={props.boardType}
     />
   ));
   return <div className='row'>{cells}</div>;

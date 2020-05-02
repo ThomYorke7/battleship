@@ -47,14 +47,6 @@ function createComputer() {
     }
   }
 
-  // function checkShips() {
-  //   computerShips.some((ship) => {
-  //     if (ship.isSunk() === 'sunk') {
-  //       console.log(ship.getLength());
-  //     }
-  //   });
-  // }
-
   function hasLost() {
     return computerShips.every((ship) => ship.isSunk() === 'sunk');
   }
@@ -73,11 +65,9 @@ function createComputer() {
 
   function receiveAttack(x, y) {
     computer.receiveAttack(x, y);
-    // checkShips();
   }
 
   return {
-    // checkShips,
     hasLost,
     attack,
     computerBoard,

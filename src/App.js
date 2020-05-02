@@ -38,7 +38,6 @@ class App extends React.Component {
   handleAttack = (e) => {
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
-    console.log(this.computer.hasLost());
     if (e.target.classList.contains('shipCell')) {
       e.target.classList.add('hitCell');
     }
@@ -53,7 +52,7 @@ class App extends React.Component {
     return (
       <div className='mainArea'>
         <div>
-          <Board item={this.state.playerBoard} id='playerBoard' />
+          <Board item={this.state.playerBoard} boardType='playerBoard' />
           <div className='ships'>
             {this.state.playerShips.map((ship) => (
               <Ships
@@ -71,7 +70,7 @@ class App extends React.Component {
           <Board
             item={this.state.computerBoard}
             handleAttack={this.handleAttack}
-            id='computerBoard'
+            boardType='computerBoard'
           />
           <div className='ships'>
             {this.state.computerShips.map((ship) => (

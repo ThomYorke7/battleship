@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  cursor: pointer;
 }
 
 .mainArea {
@@ -59,11 +61,11 @@
 }
 
 .notSunk {
-  background-color: aquamarine;
+  background-color: rgb(65, 179, 65);
 }
 
 .sunk {
-  background-color: tomato;
+  background-color: #ee2c29;
 }
 
 .ships {
@@ -104,13 +106,40 @@
 }
 
 .shipCell {
-  color: blue;
+  color: transparent;
 }
 
-.missedCell {
-  background-color: aquamarine;
+.X {
+  background-color: #4281a4;
+  pointer-events: none;
+  color: white;
 }
 
 .hitCell {
-  background-color: tomato;
+  background-color: #ee2c29;
+  pointer-events: none;
+}
+
+.playerCell1,
+.playerCell2,
+.playerCell3,
+.playerCell4,
+.playerCell5 {
+  color: transparent;
+}
+
+.playerCell1 {
+  background-color: #e8c547;
+}
+.playerCell2 {
+  background-color: #434371;
+}
+.playerCell3 {
+  background-color: #52b788;
+}
+.playerCell4 {
+  background-color: #d64933;
+}
+.playerCell5 {
+  background-color: #2b303a;
 }

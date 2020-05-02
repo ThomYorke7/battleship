@@ -3,14 +3,20 @@ import BoardFrame from './boardFrame';
 import Row from './row';
 
 const Board = (props) => {
-  const { item, id, handleAttack } = props;
+  const { item, boardType, handleAttack } = props;
   const boards = item.map((board, i) => (
-    <Row item={board} key={i} dataY={i} handleAttack={handleAttack} />
+    <Row
+      item={board}
+      key={i}
+      dataY={i}
+      handleAttack={handleAttack}
+      boardType={boardType}
+    />
   ));
   return (
     <div className='gameBoards'>
       <BoardFrame />
-      <div className='board' id={id}>
+      <div className='board' id={boardType}>
         {boards}
       </div>
     </div>
