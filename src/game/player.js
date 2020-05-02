@@ -3,6 +3,7 @@ import { gameBoard } from './gameBoard';
 function createPlayer() {
   const player = gameBoard();
   const playerBoard = player.board;
+  const playerShips = player.ships;
 
   function createCoordinates() {
     const x = Math.floor(Math.random() * 10);
@@ -37,7 +38,7 @@ function createPlayer() {
   }
 
   function newBoard() {
-    player.ships = [];
+    playerShips.length = 0;
     for (let i = 0; i < playerBoard.length; i += 1) {
       for (let j = 0; j < playerBoard.length; j += 1) {
         playerBoard[i].splice(j, 1, '');
@@ -52,7 +53,14 @@ function createPlayer() {
   function attack(x, y, enemy) {
     enemy.receiveAttack(x, y);
   }
-  return { hasLost, attack, playerBoard, generatePlacement, newBoard };
+  return {
+    hasLost,
+    attack,
+    playerBoard,
+    generatePlacement,
+    newBoard,
+    playerShips,
+  };
 }
 
 export default createPlayer;

@@ -12,6 +12,7 @@ class App extends React.Component {
     this.computer = createComputer();
     this.state = {
       playerBoard: this.player.playerBoard,
+      playerShips: [],
       computerBoard: [],
       computerShips: [],
     };
@@ -30,13 +31,17 @@ class App extends React.Component {
     this.player.generatePlacement();
     this.setState({
       playerBoard: this.player.playerBoard,
+      playerShips: this.player.playerShips,
     });
   };
 
   handleAttack = (e) => {
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
-    console.log(e.target);
+    console.log(this.computer.hasLost());
+    if (e.target.classList.contains('shipCell')) {
+      e.target.classList.add('hitCell');
+    }
     this.computer.receiveAttack(x, y);
     this.setState({
       computerBoard: this.computer.computerBoard,
@@ -49,6 +54,15 @@ class App extends React.Component {
       <div className='mainArea'>
         <div>
           <Board item={this.state.playerBoard} id='playerBoard' />
+          <div className='ships'>
+            {this.state.playerShips.map((ship) => (
+              <Ships
+                key={ship.getLength()}
+                id={ship.getLength()}
+                className={ship.isSunk()}
+              />
+            ))}
+          </div>
           <button onClick={this.handleNewBoard} type='button' id='newBoardBtn'>
             New Board
           </button>
@@ -61,7 +75,11 @@ class App extends React.Component {
           />
           <div className='ships'>
             {this.state.computerShips.map((ship) => (
-              <Ships id={ship.getLength()} className={ship.isSunk()} />
+              <Ships
+                key={ship.getLength()}
+                id={ship.getLength()}
+                className={ship.isSunk()}
+              />
             ))}
           </div>
         </div>

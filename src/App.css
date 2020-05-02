@@ -21,7 +21,7 @@
 
 #newBoardBtn {
   position: absolute;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 .gameBoards {
@@ -63,7 +63,7 @@
 }
 
 .sunk {
-  background-color: darkred;
+  background-color: tomato;
 }
 
 .ships {
@@ -101,4 +101,16 @@
 .ships [id='5'] {
   width: 75px;
   height: 15px;
+}
+
+.shipCell {
+  color: blue;
+}
+
+.missedCell {
+  background-color: aquamarine;
+}
+
+.hitCell {
+  background-color: tomato;
 }

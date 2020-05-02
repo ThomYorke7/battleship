@@ -47,16 +47,16 @@ function createComputer() {
     }
   }
 
-  function checkShips() {
-    computerShips.some((ship) => {
-      if (ship.isSunk() === 'sunk') {
-        console.log(ship.getLength());
-      }
-    });
-  }
+  // function checkShips() {
+  //   computerShips.some((ship) => {
+  //     if (ship.isSunk() === 'sunk') {
+  //       console.log(ship.getLength());
+  //     }
+  //   });
+  // }
 
   function hasLost() {
-    return computerShips.every((ship) => ship.isSunk());
+    return computerShips.every((ship) => ship.isSunk() === 'sunk');
   }
 
   function attack(enemy) {
@@ -73,11 +73,11 @@ function createComputer() {
 
   function receiveAttack(x, y) {
     computer.receiveAttack(x, y);
-    checkShips();
+    // checkShips();
   }
 
   return {
-    checkShips,
+    // checkShips,
     hasLost,
     attack,
     computerBoard,
