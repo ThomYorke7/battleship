@@ -6,7 +6,7 @@ const Cell = (props) => {
   return (
     <button
       className={`cell ${
-        boardType === 'playerBoard' ? `playerCell${item}` : ''
+        boardType === 'playerBoard' ? `playerCell playerCell${item}` : ''
       } ${
         boardType === 'computerBoard' && typeof item === 'number'
           ? 'shipCell'
@@ -24,7 +24,3 @@ const Cell = (props) => {
 };
 
 export default Cell;
-
-// className={`cell ${item !== '' && item !== 'X' ? 'shipCell' : ''} ${
-//   item === 'X' ? 'missedCell' : ''
-// } ${boardType === 'playerBoard' ? item : ''}`}

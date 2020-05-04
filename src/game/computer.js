@@ -51,15 +51,14 @@ function createComputer() {
     return computerShips.every((ship) => ship.isSunk() === 'sunk');
   }
 
-  function attack(enemy) {
+  function attack() {
     let [x, y] = createCoordinates();
     while (true) {
       if (checkAttacks(x, y)) {
         attacks.push([x, y]);
-        enemy.receiveAttack(x, y);
-      } else {
-        [x, y] = createCoordinates();
+        return [x, y];
       }
+      [x, y] = createCoordinates();
     }
   }
 

@@ -53,9 +53,42 @@ function createPlayer() {
   function attack(x, y, enemy) {
     enemy.receiveAttack(x, y);
   }
+
+  function receiveAttack(x, y) {
+    player.receiveAttack(x, y);
+  }
+
+  function findPlayerCell(x, y) {
+    const playerCells = document.getElementsByClassName('playerCell');
+    let spot = '';
+    for (let i = 0; i < playerCells.length; i += 1) {
+      if (
+        playerCells[i].dataset.x === x.toString() &&
+        playerCells[i].dataset.y === y.toString()
+      ) {
+        spot = playerCells[i];
+        return spot;
+      }
+    }
+    return false;
+  }
+
+  function checkCell(x, y) {
+    const spot = findPlayerCell(x, y);
+    for (let i = 1; i < 6; i += 1) {
+      if (spot.classList.contains(`playerCell${i}`)) {
+        spot.classList.add('hitCell');
+        spot.classList.remove(`playerCell${i}`);
+      }
+    }
+  }
+
   return {
     hasLost,
     attack,
+    receiveAttack,
+    findPlayerCell,
+    checkCell,
     playerBoard,
     generatePlacement,
     newBoard,

@@ -42,7 +42,12 @@ class App extends React.Component {
       e.target.classList.add('hitCell');
     }
     this.computer.receiveAttack(x, y);
+    let [computerX, computerY] = this.computer.attack();
+    this.player.receiveAttack(computerX, computerY);
+    this.player.checkCell(computerX, computerY);
     this.setState({
+      playerBoard: this.player.playerBoard,
+      playerShips: this.player.playerShips,
       computerBoard: this.computer.computerBoard,
       computerShips: this.computer.computerShips,
     });

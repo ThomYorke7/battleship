@@ -6,7 +6,7 @@ const Board = (props) => {
   const { item, boardType, handleAttack } = props;
   const boards = item.map((board, i) => (
     <Row
-      item={board}
+      items={board}
       key={i}
       dataY={i}
       handleAttack={handleAttack}

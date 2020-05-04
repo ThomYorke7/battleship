@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #4281a4;
   cursor: pointer;
 }
 
@@ -110,14 +110,15 @@
 }
 
 .X {
-  background-color: #4281a4;
   pointer-events: none;
   color: white;
+  font-size: 1.3rem;
 }
 
 .hitCell {
   background-color: #ee2c29;
   pointer-events: none;
+  color: transparent;
 }
 
 .playerCell1,
@@ -138,7 +139,7 @@
   background-color: #52b788;
 }
 .playerCell4 {
-  background-color: #d64933;
+  background-color: #cf5f4e;
 }
 .playerCell5 {
   background-color: #2b303a;
