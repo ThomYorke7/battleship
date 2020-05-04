@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Board from './components/board';
 import Ships from './components/ships';
+import Menu from './components/menu';
 import createPlayer from './game/player';
 import createComputer from './game/computer';
 
@@ -11,6 +12,7 @@ class App extends React.Component {
     this.player = createPlayer();
     this.computer = createComputer();
     this.state = {
+      start: false,
       playerBoard: this.player.playerBoard,
       playerShips: [],
       computerBoard: [],
@@ -35,6 +37,10 @@ class App extends React.Component {
     });
   };
 
+  handleStartGame = () => {
+    this.setState({ start: true });
+  };
+
   handleAttack = (e) => {
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
@@ -55,39 +61,44 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='mainArea'>
-        <div>
-          <Board item={this.state.playerBoard} boardType='playerBoard' />
-          <div className='ships'>
-            {this.state.playerShips.map((ship) => (
-              <Ships
-                key={ship.getLength()}
-                id={ship.getLength()}
-                className={ship.isSunk()}
-              />
-            ))}
-          </div>
-          <button onClick={this.handleNewBoard} type='button' id='newBoardBtn'>
-            New Board
-          </button>
-        </div>
-        <div>
-          <Board
-            item={this.state.computerBoard}
-            handleAttack={this.handleAttack}
-            boardType='computerBoard'
+      <React.Fragment>
+        {!this.state.start && (
+          <Menu
+            handleNewBoard={this.handleNewBoard}
+            handleStartGame={this.handleStartGame}
           />
-          <div className='ships'>
-            {this.state.computerShips.map((ship) => (
-              <Ships
-                key={ship.getLength()}
-                id={ship.getLength()}
-                className={ship.isSunk()}
-              />
-            ))}
+        )}
+        <div className='mainArea'>
+          <div>
+            <Board item={this.state.playerBoard} boardType='playerBoard' />
+            <div className='ships'>
+              {this.state.playerShips.map((ship) => (
+                <Ships
+                  key={ship.getLength()}
+                  id={ship.getLength()}
+                  className={ship.isSunk()}
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <Board
+              item={this.state.computerBoard}
+              handleAttack={this.handleAttack}
+              boardType='computerBoard'
+            />
+            <div className='ships'>
+              {this.state.computerShips.map((ship) => (
+                <Ships
+                  key={ship.getLength()}
+                  id={ship.getLength()}
+                  className={ship.isSunk()}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
